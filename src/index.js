@@ -23,7 +23,7 @@ function executeCallbackInNextFrame(callback) {
 
 async function handleAsAsync(func) {
     try {
-        func(function(error) {
+        func(error => {
             if (error) {
                 throw error;
             }
@@ -36,7 +36,7 @@ async function handleAsAsync(func) {
 function handleCorrectlyWithPromise(func) {
     return new Promise((resolve, reject) => {
         try {
-            func(function(error) {
+            func(error => {
                 if (error) {
                     reject(error);
                 } else {
@@ -52,7 +52,7 @@ function handleCorrectlyWithPromise(func) {
 function handleWrongWithPromise(func) {
     return new Promise((resolve, reject) => {
         try {
-            func(function(error) {
+            func(error => {
                 if (error) {
                     throw error;
                 }
